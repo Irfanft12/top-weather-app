@@ -4,12 +4,13 @@ document.addEventListener("DOMContentLoaded", function() {
     const button = document.querySelector("button");
     const weatherDisplay = document.querySelector(".weather-display");
     const tempText = weatherDisplay.querySelector(".temp-text");
-    const icon = weatherDisplay.querySelector(".icon");
     const location = weatherDisplay.querySelector(".location");
     const condition = weatherDisplay.querySelector(".condition");
     const searchError = document.querySelector(".search-error");
     const feelsLike = weatherDisplay.querySelector(".feels-like");
     const description = weatherDisplay.querySelector(".description");
+    const iconImage = weatherDisplay.querySelector(".icon-image");
+    
     
     
 
@@ -37,34 +38,15 @@ document.addEventListener("DOMContentLoaded", function() {
         return capitalized;
     }
 
-    const iconClass = {
-        "clear-day": "fa-sun",
-        "clear-night": "fa-moon",
-        "partly-cloudy-day": "fa-cloud-sun",
-        "partly-cloudy-night": "fa-cloud-moon",
-        "rainy": "fa-cloud-rain",
-        "rain": "fa-cloud-showers-heavy",
-        "snow": "fa-snowflake",
-        "cloudy": "fa-cloud",
-        "fog": "fa-smog",
-        "wind": "fa-wind",
-        "sleet": "fa-cloud-rain"
-    }
-
-    function getWeatherIcon(icon) {
-        return iconClass[icon];
-    }
-
     function processData(data) {
-        console.log(data)
+        console.log(data.days[0].icon)
         const text = data.currentConditions.temp
         location.innerHTML = capitalizeFistLetter(data.address);
         tempText.innerHTML = text + "°C";
-        const weatherIcon = getWeatherIcon(data.currentConditions.icon);
-        icon.className = `icon fa-solid ${weatherIcon}`;
         condition.innerHTML = data.currentConditions.conditions;
         feelsLike.innerHTML =  `Feels like ${data.currentConditions.feelslike}°C`;
         description.innerHTML = data.description;
+        iconImage.src = `https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/PNG/4th%20Set%20-%20Color/${data.days[0].icon}.png`;
     }
 
     form.addEventListener("submit", function(e) {
