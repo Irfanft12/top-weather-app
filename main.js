@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <h2 class="location">${capitalizeFistLetter(data.address)}</h2>
                     <h4 class="temp">
                         <img src="https://raw.githubusercontent.com/visualcrossing/WeatherIcons/main/PNG/4th%20Set%20-%20Color/${data.days[0].icon}.png" alt="${data.days[0].icon}" class="icon-image">
-                        <span class="temp-text">${data.currentConditions.temp} °C </span>
+                        <span class="temp-text">${data.currentConditions.temp}°C </span>
                         <p class="feels-like">Feels like ${data.currentConditions.feelslike}°C</p>
                     </h4>
                     <p class="condition">${data.currentConditions.conditions}</p>
